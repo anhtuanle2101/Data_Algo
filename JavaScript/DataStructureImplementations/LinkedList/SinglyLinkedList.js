@@ -87,14 +87,17 @@ class SinglyLinkedList{
     remove(val){
         if (this.size === 0) return -1;
         if (this.size === 1 && this.head.val === val){
+			this.head.next = null;
             this.head = null;
             this.tail = null;
             this.size = 0;
             return;
         }
         if (this.head.val === val) {
+			let tempNode = this.head;
             this.head = this.head.next;
             this.size--;
+			tempNode.next = null;
             return;
         }
         let currentNode = this.head;
@@ -102,9 +105,11 @@ class SinglyLinkedList{
         while (currentNode.next !== null){
             currentNode = currentNode.next;
             if (currentNode.val === val){
+				let tempNode = currentNode;
                 lastNode.next = currentNode.next;
                 this.tail = currentNode.next === null? lastNode: this.tail;
                 this.size--;
+				tempNode.next = null;
                 return;
             }
             lastNode = currentNode;

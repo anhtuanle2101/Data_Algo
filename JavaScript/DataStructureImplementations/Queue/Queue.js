@@ -32,16 +32,29 @@ class Queue{
             this.front = null;
             this.back = null;
             this.size = 0;
-            return tempNode.val;
+			let returnValue = tempNode.value;
+			tempNode.front = null;
+			tempNode.back = null;
+            return returnValue;
         }
         let tempNode = this.front;
         this.front = this.front.next;
         this.size--;
-        return tempNode.val;
+		let returnValue = tempNode.val;
+		//free this tempNode
+		tempNode.front = null;
+		tempNode.back = null;
+        return returnValue;
     }
 
     size(){
-        return this.size;
+        let currentNode = this.front;
+		let count = 0;
+		while (currentNode.next !== null){
+			currentNode = currentNode.next;
+			count++;
+		}
+		return count;
     }
 
     print(){

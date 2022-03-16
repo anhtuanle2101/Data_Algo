@@ -71,17 +71,22 @@ class DoublyLinkedList{
             return;
         }
         if (this.head.val === val) {
+			let tempNode = this.head;
             this.head = this.head.next; 
             this.size--; 
+			tempNode.next = null;
             return
         }
         let currentNode = this.head;
         while (currentNode.next !== null){
             currentNode = currentNode.next;
             if (currentNode.val === val){
+				let tempNode = currentNode;
                 currentNode.prev.next = currentNode.next;
                 this.tail = currentNode.next === null? currentNode.prev : this.tail;
                 this.size--;
+				tempNode.prev = null;
+				tempNode.next = null;
                 return;
             }
         }

@@ -1,5 +1,5 @@
 class Solution:
-    def isUnique(str):
+    def isUnique(self, str):
         if len(str) <= 1:
             return True
         #init set
